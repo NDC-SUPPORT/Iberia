@@ -423,6 +423,7 @@ public class VentanaPrincipal implements ActionListener {
 	/**
 	 * Captura evento
 	 */
+	//prueba
 	public void actionPerformed(ActionEvent e) 
 	{
 		List<BeanFormulario> listaCheckServ = new ArrayList<BeanFormulario>();
