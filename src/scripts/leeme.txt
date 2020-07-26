@@ -1,0 +1,2 @@
+Para convertir todos los ficheros de un directorio:
+find . -type f -print0 | xargs -0 dos2unix
