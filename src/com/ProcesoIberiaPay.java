@@ -49,8 +49,8 @@ public class ProcesoIberiaPay {
 			    String tipoPago = paymentMethod.getString("type.string");
 			    
 			    //Errores... (Puede devolver varios errores...)
-			    String[] cE  = new String[2]; //c�digo error
-			    String[] dE  = new String[2]; //descripci�n error
+			    String[] cE  = new String[2]; //codigo error
+			    String[] dE  = new String[2]; //descripción error
 			    
 			    Double totalPrecio = null;
 				String moneda = "";
