@@ -49,8 +49,8 @@ public class ProcesoIberiaPay {
 			    String tipoPago = paymentMethod.getString("type.string");
 			    
 			    //Errores... (Puede devolver varios errores...)
-			    String[] cE  = new String[2]; //código error
-			    String[] dE  = new String[2]; //descripción error
+			    String[] cE  = new String[2]; //cï¿½digo error
+			    String[] dE  = new String[2]; //descripciï¿½n error
 			    
 			    Double totalPrecio = null;
 				String moneda = "";
@@ -70,17 +70,17 @@ public class ProcesoIberiaPay {
 						for(int j=0; j<error.length(); j++)
 						{
 							JSONObject errorArray = error.getJSONObject(j);
-							//Código de error y descripción
+							//CÃ³digo de error y descripciÃ³n
 							cE[j] = errorArray.getString("code.string");
 							dE[j] = errorArray.getString("reason.string");
 							    
-							//Actualmente sólo admitimos 2 valores
+							//Actualmente sÃ³lo admitimos 2 valores
 						    if(j==1) break;
 						}
 					} 
 					else
 					{
-						//Solo es válido para los casos de IBERIA_PAY y hayan ido correctamente.
+						//Solo es vÃ¡lido para los casos de IBERIA_PAY y hayan ido correctamente.
 						if ("IBERIA_PAY".equals(tipoPago))
 						{
 							//kpi.response.entity.paymentItems.list.object -> Tarjeta + Precio

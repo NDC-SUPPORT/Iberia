@@ -24,14 +24,14 @@ public class Payment_IBPay {
 		{
 			this.bean = bean;
 			this.request = bean.getCodRequest();
-			this.bean.setRazonFraude("¿?");
-			this.bean.setDecisionFraude("¿?");
-			this.bean.setTransaccion("¿?");
-			this.bean.setEstadoDelPago("¿?");
-			this.bean.setResultadoDelPago("¿?");
-			//this.bean.setPnr("¿?");
-			//this.bean.setMoneda("¿?");
-			//this.bean.setMascaraTarjeta("¿?");
+			this.bean.setRazonFraude("Â¿?");
+			this.bean.setDecisionFraude("Â¿?");
+			this.bean.setTransaccion("Â¿?");
+			this.bean.setEstadoDelPago("Â¿?");
+			this.bean.setResultadoDelPago("Â¿?");
+			//this.bean.setPnr("Â¿?");
+			//this.bean.setMoneda("Â¿?");
+			//this.bean.setMascaraTarjeta("Â¿?");
 						
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Calendar c = bean.getTimeLocal();
@@ -74,7 +74,7 @@ public class Payment_IBPay {
 									VentanaPrincipalIberiaPay.showInfo("FRAUDE: " + codigoRazon + " - " + decision);
 								}
 							
-								//Transacción
+								//TransacciÃ³n
 								if (jsonPayload.has("transactionId")) {
 									String transaccion = jsonPayload.getString("transactionId");
 									//transaccion = !transaccion.isEmpty()?"OK":"KO";
@@ -105,14 +105,14 @@ public class Payment_IBPay {
 						    }
 						    else
 						    {
-						    	VentanaPrincipalIberiaPay.showWarning("WARNING !!! -> payload vacío.");
+						    	VentanaPrincipalIberiaPay.showWarning("WARNING !!! -> payload vacÃ­o.");
 						    }
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipalIberiaPay.showInfo("Payment_IBPay.analizarPMT(): Array de resultados vacío en scriptIberiaPay.sh");
+					VentanaPrincipalIberiaPay.showInfo("Payment_IBPay.analizarPMT(): Array de resultados vacÃ­o en scriptIberiaPay.sh");
 				}
 	        }
 		}
@@ -129,7 +129,7 @@ public class Payment_IBPay {
 		{
 			this.bean = bean;
 			this.request = bean.getCodRequest();
-			this.bean.setServicioNDC("¿?");
+			this.bean.setServicioNDC("Â¿?");
 						
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Calendar c = bean.getTimeLocal();
@@ -244,7 +244,7 @@ public class Payment_IBPay {
 				}
 				else 
 				{
-					VentanaPrincipalIberiaPay.showInfo("Payment_IBPay.analizarNDC(): Array de resultados vacío en scriptAdiOcIberiaPay.sh");
+					VentanaPrincipalIberiaPay.showInfo("Payment_IBPay.analizarNDC(): Array de resultados vacÃ­o en scriptAdiOcIberiaPay.sh");
 				}
 	        }
 		}

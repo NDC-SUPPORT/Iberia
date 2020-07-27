@@ -1,9 +1,11 @@
 package com;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -260,16 +262,34 @@ public class VentanaPrincipalIberiaPay implements ActionListener {
 			txtHoraFin.setText("23:59:59");
 		}
 		
-		if (e.getSource().equals(btnAbrirExcel)) {
-			try {				
-				String textPath = txfIdExcel.getText().replace("\\", "\\\\");
-				if (!textPath.isEmpty()) {
-					Runtime.getRuntime().exec("cmd /c start " + textPath);
-				} else {
-					showError("Falta informar c:\\ruta\\fichero.xls !!!");
-				}
-			} catch (Exception ex) {
-				ex.printStackTrace();
+		String os = System.getProperty("os.name").toLowerCase();
+		if (e.getSource().equals(btnAbrirExcel)) 
+		{
+			if (os.contains("mac")) {
+				//macOS
+				try 
+				{
+					String textPath = txfIdExcel.getText().replace("\\", "\\\\");
+					if (!textPath.isEmpty()) {
+						File file = new File(textPath);
+						Desktop desktop = Desktop.getDesktop(); 
+						if(file.exists()) {desktop.open(file);}
+					} else {
+						showError("Falta informar \\ruta\\fichero.xls !!!");
+					}
+				} catch (Exception exMac) {exMac.printStackTrace();}
+				
+			} else {
+				//Windows
+				try {				
+					String textPath = txfIdExcel.getText().replace("\\", "\\\\");
+					if (!textPath.isEmpty()) {
+						Runtime.getRuntime().exec("cmd /c start " + textPath);
+					} else {
+						showError("Falta informar c:\\ruta\\fichero.xls !!!");
+					}
+				} catch (Exception exWin) {exWin.printStackTrace();}
+				
 			}
 		}
 		
