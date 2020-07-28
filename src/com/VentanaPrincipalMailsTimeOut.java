@@ -24,6 +24,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
 import beans.BeanFormularioIberiaPay;
+import beans.BeanFormularioMailsTimeOut;
 
 public class VentanaPrincipalMailsTimeOut implements ActionListener {
 
@@ -243,7 +244,7 @@ public class VentanaPrincipalMailsTimeOut implements ActionListener {
 	public void actionPerformed(ActionEvent e) 
 	{
 		boolean bAnalizar = true;
-		BeanFormularioIberiaPay bF_IBPay = null;
+		BeanFormularioMailsTimeOut bF_Mails = null;
 		String fchFormulario = txfFecha.getText();
 		String fchParaScript = fchFormulario.substring(6) + "-" + fchFormulario.substring(3,5) + "-" + fchFormulario.substring(0,2);
 		
@@ -300,10 +301,10 @@ public class VentanaPrincipalMailsTimeOut implements ActionListener {
 		
 			textPane.setText(null);
 			
-			bF_IBPay = new BeanFormularioIberiaPay(fchParaScript, hIni, hFin, txfIdExcel.getText(), bAnalizar);
+			bF_Mails = new BeanFormularioMailsTimeOut(fchParaScript, hIni, hFin, txfIdExcel.getText(), bAnalizar);
 			
-			ProcesoIberiaPay p = new ProcesoIberiaPay();
-			p.ejecutar(bF_IBPay);
+			ProcesoMailsTimeOut p = new ProcesoMailsTimeOut();
+			p.ejecutar(bF_Mails);
 		}
 		
 		if (e.getSource().equals(btnSalir)) {

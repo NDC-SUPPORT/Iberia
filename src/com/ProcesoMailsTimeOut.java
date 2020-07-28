@@ -34,24 +34,25 @@ public class ProcesoMailsTimeOut {
 			    
 			    JSONObject kpi = source.getJSONObject("kpi");
 				JSONObject parameters = kpi.getJSONObject("parameters");
-
-				String pnr = "";
-			    
-			    if (kpi.has("response")) 
-			    {
-					JSONObject response = kpi.getJSONObject("response");
-					JSONObject entity = response.getJSONObject("entity");
-					
-					if (entity.has("errors.list.object")) 
-					{
-						
-					} 
-					else
-					{
-
-					}				
-			    }
-			    
+				JSONObject mailProviderRequest = parameters.getJSONObject("mailProviderRequest");
+				JSONObject body = mailProviderRequest.getJSONObject("body");
+				JSONObject salesforceRequest = body.getJSONObject("salesforceRequest");
+				
+				//Para obtener el PNR (+ idioma)
+				String pnr = "¿?";
+				JSONObject salesforceBodyRequest = salesforceRequest.getJSONObject("salesforceBodyRequest");
+				String idioma = salesforceBodyRequest.getString("language.string");
+				String jsonMailString = salesforceBodyRequest.getString("json_data.string");
+				int comienzo = jsonMailString.indexOf("locator");
+				if (comienzo != -1) {
+					pnr = jsonMailString.substring(comienzo+10,comienzo+10+5);
+				}
+				
+				//Destinatario
+				JSONObject subscriberKeyRequest = salesforceRequest.getJSONObject("subscriberKeyRequest");
+				String email = subscriberKeyRequest.getString("email.string");
+				String nombre = subscriberKeyRequest.getString("firstName.string") + " " + subscriberKeyRequest.getString("lastName.string");
+			  			    
 			    BeanSheetExcelMailsTimeOut bSE_Mails = new BeanSheetExcelMailsTimeOut(timestamp, request, usuario, pnr);
 			    myList.add(bSE_Mails);
 			}
@@ -75,7 +76,6 @@ public class ProcesoMailsTimeOut {
 	{
 		try
 		{
-			boolean analizar = bF_Mails.isAnalizar();
 			String fch = bF_Mails.getFecha();
 			String hIni = bF_Mails.getHoraInicio();
 			String hFin = bF_Mails.getHoraFin();
