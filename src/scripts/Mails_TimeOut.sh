@@ -2,7 +2,7 @@
 fch=$1
 hIni=$2
 hFin=$3
-curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-debug-*/sse-orm.mail-manage.native-mail-provider-send.1.debug/_search?size=2&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
+curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-debug-*/sse-orm.mail-manage.native-mail-provider-send.1.debug/_search?size=999&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
 
   "sort": [
     {

@@ -14,17 +14,23 @@ public class BeanSheetExcelMailsTimeOut {
 	private String   codRequest       = "";
 	private String   usuario          = "";
 	private String   pnr              = "";
+	private String   nombre           = "";
+	private String   email            = "";
+	private String   idioma           = "";
 
 	public BeanSheetExcelMailsTimeOut() {
 		
 	}
 	
-	public BeanSheetExcelMailsTimeOut(String timeStamp, String codRequest, String usuario, String pnr) 
+	public BeanSheetExcelMailsTimeOut(String timeStamp, String codRequest, String usuario, String pnr, String nombre, String email, String idioma) 
 	{
 		this.timeStamp = timeStamp;
 		this.codRequest = codRequest;
 		this.usuario = usuario;
 		this.pnr = pnr;
+		this.nombre = nombre;
+		this.email = email;
+		this.idioma = idioma;
 
 		//UTC = GMT = Zulu
 		TimeZone timeZone = TimeZone.getTimeZone("UTC");
@@ -90,6 +96,30 @@ public class BeanSheetExcelMailsTimeOut {
 
 	public void setPnr(String pnr) {
 		this.pnr = pnr;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 
 }

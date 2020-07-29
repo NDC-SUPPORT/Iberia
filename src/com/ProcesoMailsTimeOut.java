@@ -51,9 +51,23 @@ public class ProcesoMailsTimeOut {
 				//Destinatario
 				JSONObject subscriberKeyRequest = salesforceRequest.getJSONObject("subscriberKeyRequest");
 				String email = subscriberKeyRequest.getString("email.string");
-				String nombre = subscriberKeyRequest.getString("firstName.string") + " " + subscriberKeyRequest.getString("lastName.string");
+				String firstName = "¿?";
+				if (subscriberKeyRequest.has("firstName.string")) {
+					firstName = subscriberKeyRequest.getString("firstName.string");
+				} else {
+					VentanaPrincipalMailsTimeOut.showWarning("WARNING !!! - No tiene firstName: " + request);
+				}
+				
+				String lastName = "¿?";
+				if (subscriberKeyRequest.has("lastName.string")) {
+					lastName = subscriberKeyRequest.getString("lastName.string");
+				} else {
+					VentanaPrincipalMailsTimeOut.showWarning("WARNING !!! - No tiene lastName: " + request);
+				}
+				
+				String nombre = firstName + " " + lastName;
 			  			    
-			    BeanSheetExcelMailsTimeOut bSE_Mails = new BeanSheetExcelMailsTimeOut(timestamp, request, usuario, pnr);
+			    BeanSheetExcelMailsTimeOut bSE_Mails = new BeanSheetExcelMailsTimeOut(timestamp, request, usuario, pnr, nombre, email, idioma);
 			    myList.add(bSE_Mails);
 			}
 			
@@ -89,8 +103,6 @@ public class ProcesoMailsTimeOut {
 
 				if (listaBeans != null && !listaBeans.isEmpty()) 
 				{	
-					VentanaPrincipalMailsTimeOut.showInfo("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-					VentanaPrincipalMailsTimeOut.showInfo("1) Preparando datos para Excel...");
 					SendToLocalExcelMailsTimeOut stle_Mails = new SendToLocalExcelMailsTimeOut();
 					stle_Mails.toExcel(listaBeans, bF_Mails);
 				} 

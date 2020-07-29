@@ -112,7 +112,7 @@ public class SendToLocalExcel {
 			        
 			        VentanaPrincipal.showInfo("3) A partir de la fila: " + (numCasos==0?"N/A":filaInicio+1));
 			        
-			        //Actualizamos la pestaña de contadores...
+			        //Actualizamos la pestaÃ±a de contadores...
 			        Row rowPestaniaCero = null;
 			        Cell cellPestaniaCero = null;
 			        if (total) 
