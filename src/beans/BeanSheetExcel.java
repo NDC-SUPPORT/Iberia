@@ -20,12 +20,13 @@ public class BeanSheetExcel {
 	private String   responseId       = "";
 	private String   tipoPago         = "";
 	private String   pnr              = "";
+	private Integer  version          = null;
 
 	public BeanSheetExcel() {
 		
 	}
 		
-	public BeanSheetExcel(String tS, String cR, String[] cE, String[] dE, String rId, String tipoPago, String pnr, Integer numC) 
+	public BeanSheetExcel(String tS, String cR, String[] cE, String[] dE, String rId, String tipoPago, String pnr, Integer v, Integer numC) 
 	{
 		this.timeStamp = tS;
 		this.codRequest = cR;
@@ -33,6 +34,7 @@ public class BeanSheetExcel {
 		this.codError[1] = cE[1];
 		this.descripcionError[0] = dE[0];
 		this.descripcionError[1] = dE[1];
+		this.setVersion(v);
 		
 		this.numDeCasos = numC;
 
@@ -154,5 +156,13 @@ public class BeanSheetExcel {
 
 	public void setPnr(String pnr) {
 		this.pnr = pnr;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }

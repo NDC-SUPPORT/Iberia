@@ -73,7 +73,11 @@ public class SendToLocalExcel {
 						BeanSheetExcel bean = (BeanSheetExcel) lista.get(i);
 						String impCodError = bean.getCodError()[0] + (bean.getCodError()[1]!=null?"\n" + bean.getCodError()[1]:"");
 						String impDesError = bean.getDescripcionError()[0] + (bean.getDescripcionError()[1]!=null?"\n" + bean.getDescripcionError()[1]:"");
-						data.put(i, new Object[] {agrupar?bean.getFechaLocal().substring(0,10):bean.getFechaLocal(), agrupar?"":bean.getCodRequest(), impCodError, impDesError, bean.getNumDeCasos(), bean.getTipoError(), bean.getComentarios()});
+						if ("OC".equals(codServ)) {
+							data.put(i, new Object[] {agrupar?bean.getFechaLocal().substring(0,10):bean.getFechaLocal(), agrupar?"":bean.getCodRequest(), bean.getVersion()==17?bean.getVersion():null, impCodError, impDesError, bean.getNumDeCasos(), bean.getTipoError(), bean.getComentarios()});
+						} else {
+							data.put(i, new Object[] {agrupar?bean.getFechaLocal().substring(0,10):bean.getFechaLocal(), agrupar?"":bean.getCodRequest(), impCodError, impDesError, bean.getNumDeCasos(), bean.getTipoError(), bean.getComentarios()});
+						}
 						numCasos = numCasos + bean.getNumDeCasos();
 					}
 					

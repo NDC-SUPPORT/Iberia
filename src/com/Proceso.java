@@ -49,6 +49,8 @@ public class Proceso {
 				String fH = source.getString("@timestamp");
 				//request
 			    String cR = source.getString("request");
+			    //version
+			    Integer v = Integer.valueOf(source.getString("version"));
 				
 			    String[] cE  = new String[2];
 			    String[] dE  = new String[2];
@@ -70,7 +72,7 @@ public class Proceso {
 					for(int j=0; j<error.length(); j++)
 					{
 						JSONObject errorArray = error.getJSONObject(j);
-						//Código de error y descripci�n
+						//Código de error y descripción
 						cE[j] = errorArray.getString("shortText.string");
 					    dE[j] = errorArray.getString("value.string");
 					    
@@ -129,7 +131,7 @@ public class Proceso {
 					}
 			    }
 			    
-			    BeanSheetExcel bSG = new BeanSheetExcel(fH, cR, cE, dE, rId, tipoPago, pnr, 1);
+			    BeanSheetExcel bSG = new BeanSheetExcel(fH, cR, cE, dE, rId, tipoPago, pnr, v, 1);
 			    myList.add(bSG);
 			}
 			
@@ -185,7 +187,7 @@ public class Proceso {
 					dE[0] = objArrayII.getString("key");
 					Integer numCasos = objArrayII.getInt("doc_count");
 
-					BeanSheetExcel bSG = new BeanSheetExcel(bF.getFecha() + " 00:00:00.00000", "", cE, dE, "", "", "", numCasos);
+					BeanSheetExcel bSG = new BeanSheetExcel(bF.getFecha() + " 00:00:00.00000", "", cE, dE, "", "", "", null, numCasos);
 					myList.add(bSG);
 				}
 			}
