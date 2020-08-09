@@ -102,19 +102,23 @@ public class Proceso {
 					JSONObject parameters = kpi.getJSONObject("parameters");
 					JSONObject parameter1 = parameters.getJSONObject("parameter1");
 					JSONObject query = parameter1.getJSONObject("query");
+					
+					//--- v16 ---
 					//Obtenemos el responseID en OrderCreate
-					JSONObject orderItems = query.getJSONObject("orderItems");
-					JSONObject shoppingResponse = orderItems.getJSONObject("shoppingResponse");
-					JSONObject responseID = shoppingResponse.getJSONObject("responseID");
-					rId = responseID.getString("value.string");
-					//Obtenemos el tipo de pago
-					if (query.has("payments")) {
-						JSONObject payments = query.getJSONObject("payments");
-						JSONArray plo = payments.getJSONArray("payment.list.object");
-						JSONObject ploCero = plo.getJSONObject(0);
-						JSONObject method = ploCero.getJSONObject("method");
-						if (method.has("cash")) tipoPago = "CASH";
-						if (method.has("paymentCard")) tipoPago = "CreditCard";
+					if (query.has("orderItems")) { 
+						JSONObject orderItems = query.getJSONObject("orderItems");
+						JSONObject shoppingResponse = orderItems.getJSONObject("shoppingResponse");
+						JSONObject responseID = shoppingResponse.getJSONObject("responseID");
+						rId = responseID.getString("value.string");
+						//Obtenemos el tipo de pago
+						if (query.has("payments")) {
+							JSONObject payments = query.getJSONObject("payments");
+							JSONArray plo = payments.getJSONArray("payment.list.object");
+							JSONObject ploCero = plo.getJSONObject(0);
+							JSONObject method = ploCero.getJSONObject("method");
+							if (method.has("cash")) tipoPago = "CASH";
+							if (method.has("paymentCard")) tipoPago = "CreditCard";
+						}
 					}
 			    }
 			    
