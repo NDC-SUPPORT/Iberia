@@ -2,7 +2,7 @@
 fch=$1
 hIni=$2
 hFin=$3
-curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-traces-*/ndc-dist.createorder.soap.2.info/_search?size=999&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
+curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-traces-*/_search?size=999&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
 
   "sort": [
     {
