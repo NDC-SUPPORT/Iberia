@@ -100,26 +100,64 @@ public class Proceso {
 			    if ("OC".equals(codServ)) {
 				    JSONObject kpi = source.getJSONObject("kpi");
 					JSONObject parameters = kpi.getJSONObject("parameters");
-					JSONObject parameter1 = parameters.getJSONObject("parameter1");
-					JSONObject query = parameter1.getJSONObject("query");
 					
-					//--- v16 ---
-					//Obtenemos el responseID en OrderCreate
-					if (query.has("orderItems")) { 
-						JSONObject orderItems = query.getJSONObject("orderItems");
-						JSONObject shoppingResponse = orderItems.getJSONObject("shoppingResponse");
-						JSONObject responseID = shoppingResponse.getJSONObject("responseID");
-						rId = responseID.getString("value.string");
-						//Obtenemos el tipo de pago
-						if (query.has("payments")) {
-							JSONObject payments = query.getJSONObject("payments");
-							JSONArray plo = payments.getJSONArray("payment.list.object");
-							JSONObject ploCero = plo.getJSONObject(0);
-							JSONObject method = ploCero.getJSONObject("method");
-							if (method.has("cash")) tipoPago = "CASH";
-							if (method.has("paymentCard")) tipoPago = "CreditCard";
+					if (v != 17) {
+						
+						JSONObject parameter1 = parameters.getJSONObject("parameter1");
+						JSONObject query = parameter1.getJSONObject("query");
+					
+						//--- v16 ---
+						if (query.has("orderItems")) { 
+							JSONObject orderItems = query.getJSONObject("orderItems");
+							JSONObject shoppingResponse = orderItems.getJSONObject("shoppingResponse");
+							JSONObject responseID = shoppingResponse.getJSONObject("responseID");
+							rId = responseID.getString("value.string");
+							//Obtenemos el tipo de pago
+							if (query.has("payments")) {
+								JSONObject payments = query.getJSONObject("payments");
+								JSONArray plo = payments.getJSONArray("payment.list.object");
+								JSONObject ploCero = plo.getJSONObject(0);
+								JSONObject method = ploCero.getJSONObject("method");
+								if (method.has("cash")) tipoPago = "CASH";
+								if (method.has("paymentCard")) tipoPago = "CreditCard";
+							}
 						}
+					
+					} else {
+						
+						//********************************
+						// ESTO SE DEBE A QUE EN VERSIÓN 17 EL KPI NO SE ESCRIBE IGUAL EN TODAS LAS PETICIONES (¿SE ARREGLARÍA CON EL PASE?)
+						//********************************
+						
+						JSONObject query = null;
+						if (parameters.has("parameter1")) {
+							//Opcion 1 - Respuesta tiene "parameter1"
+							JSONObject parameter1 = parameters.getJSONObject("parameter1");
+							query = parameter1.getJSONObject("query");
+						} else {
+							//Opcion 2 - Respuesta NO tiene "parameter1"
+							query = parameters.getJSONObject("query");
+						}
+					
+						//--- v17 ---
+						if (query.has("order")) { 
+							JSONObject order = query.getJSONObject("order");
+							JSONArray oListObject = order.getJSONArray("offer.list.object");
+							JSONObject itemOLO = oListObject.getJSONObject(0);
+							rId = itemOLO.getString("responseID.string");
+							//Obtenemos el tipo de pago
+							if (query.has("payments")) {
+								JSONObject payments = query.getJSONObject("payments");
+								JSONArray plo = payments.getJSONArray("payment.list.object");
+								JSONObject ploCero = plo.getJSONObject(0);
+								JSONObject method = ploCero.getJSONObject("method");
+								if (method.has("cash")) tipoPago = "CASH";
+								if (method.has("paymentCard")) tipoPago = "CreditCard";
+							}
+						}
+					
 					}
+					
 			    }
 			    
 			    if ("CA".equals(codServ)) {

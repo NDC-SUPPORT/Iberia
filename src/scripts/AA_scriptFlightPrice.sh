@@ -2,18 +2,47 @@
 fch=$1
 hIni=$2
 hFin=$3
-curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-traces-*/ndc-dist.flightprice.soap.2.info/_search?size=999&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
+curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout-traces-*/_search?size=999&from=0' -u support:HtaCFjwHTZGa98Rf -d '{
 	
-	"sort": [
+  "sort": [
     {
       "@timestamp": {
         "order": "asc"
       }
     }
   ],
+
   "query": {
     "bool": {
       "must": [
+      	{
+          "match_phrase": {
+            "domain": {
+              "query": "ndc-dist"
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "level": {
+              "query": "info"
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "service": {
+              "query": "flightPrice"
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "operation": {
+              "query": "soap"
+            }
+          }
+        },
 		{
 			"range": {
 				"@timestamp": {
@@ -29,8 +58,7 @@ curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout
 			"exists": {
 				"field": "kpi.response.errors.error"
 			}
-        }
-		
+        }	
       ],
       "must_not": [
         {
@@ -42,6 +70,6 @@ curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout
       ]
     }
   },
-  "_source": ["@timestamp", "request", "exception", "kpi.response.errors"]
+  "_source": ["@timestamp", "request", "version", "exception", "kpi.response.errors"]
 	
 }'

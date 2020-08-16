@@ -42,6 +42,6 @@ curl -XGET 'http://ibisesdata.corp.iberia.es:9200/logstash-business-ndc-checkout
       ]
     }
   },
-  "_source": ["@timestamp", "request", "kpi.parameters.parameter1.query.ticketDocInfo.list.object", "exception", "kpi.response.errors"]
+  "_source": ["@timestamp", "request", "version", "kpi.parameters.parameter1.query.ticketDocInfo.list.object", "exception", "kpi.response.errors"]
   
 }'

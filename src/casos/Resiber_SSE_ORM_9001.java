@@ -21,6 +21,7 @@ public class Resiber_SSE_ORM_9001 {
 	private String request = "";
 	private String fchIni  = "";
 	private String fchFin  = "";
+	private boolean isFirstErrorFound = true;
 
 	private void detalleCaso12000039()
 	{
@@ -111,6 +112,8 @@ public class Resiber_SSE_ORM_9001 {
 	
 	private boolean obtenerCodDesDeResiberResIn()
 	{
+		boolean hayError = false;
+		
 		try
 		{
 			String responseKibana = MyUtil.ejecutarShellScript("scriptResiberResIn-desc.sh " + this.request + " " + this.fchIni + " " + this.fchFin);
@@ -124,23 +127,35 @@ public class Resiber_SSE_ORM_9001 {
 				
 				if (hitsArray.length() != 0) 
 				{
-					JSONObject objArray = hitsArray.getJSONObject(0);
-					JSONObject source = objArray.getJSONObject("_source");
-					JSONObject kpi = source.getJSONObject("kpi");
-					JSONObject parameters = kpi.getJSONObject("parameters");
-					JSONObject message = parameters.getJSONObject("message");
-					String payload = message.getString("payload.string");
-					
-					Document doc = MyUtil.convertStringToXMLDocument(payload);
-					
-					String codResiber = MyUtil.obtenerCodigoDeXML(doc);
-					String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
-					
-					this.bean.setComentarios((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-					VentanaPrincipal.showInfo(this.bean.getComentarios());
-					
-					if(codResiber != null) {
-						return true;
+					int numError = 1;
+					for (int i=0; i<hitsArray.length(); i++)
+					{	
+						JSONObject objArray = hitsArray.getJSONObject(i);
+						JSONObject source = objArray.getJSONObject("_source");
+						JSONObject kpi = source.getJSONObject("kpi");
+						JSONObject parameters = kpi.getJSONObject("parameters");
+						JSONObject message = parameters.getJSONObject("message");
+						String payload = message.getString("payload.string");
+						
+						Document doc = MyUtil.convertStringToXMLDocument(payload);
+						
+						NodeList nlError = doc.getElementsByTagName("error");
+						Node nodoError = nlError.item(0);
+						NodeList nlErr = doc.getElementsByTagName("err");
+						Node nodoErr = nlErr.item(0);
+						if( nodoError != null || nodoErr != null ) {
+						
+							String codResiber = MyUtil.obtenerCodigoDeXML(doc);
+							String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
+							
+							this.bean.setComentarios(this.bean.getComentarios() + (this.isFirstErrorFound?"":"\n") + "( "+numError+" ) " + (codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+							VentanaPrincipal.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+									
+							this.isFirstErrorFound = false;
+							hayError = true;
+							numError++;
+							this.bean.setTipoError("RESIBER");
+						}
 					}
 				}
 				else {
@@ -148,7 +163,7 @@ public class Resiber_SSE_ORM_9001 {
 				}
 			}
 			
-			return false;
+			return hayError;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -161,6 +176,8 @@ public class Resiber_SSE_ORM_9001 {
 	
 	public boolean obtenerCodDesDeResiberTktIn() 
 	{
+		boolean hayError = false;
+		
 		try
 		{
 			this.request = bean.getCodRequest();
@@ -178,35 +195,46 @@ public class Resiber_SSE_ORM_9001 {
 				JSONObject jsonResponse = new JSONObject(responseKibana);
 				JSONObject hitsObj = jsonResponse.getJSONObject("hits");
 				JSONArray hitsArray = hitsObj.getJSONArray("hits");
-				
+
 				if (hitsArray.length() != 0) 
 				{
-					JSONObject objArray = hitsArray.getJSONObject(0);
-					JSONObject source = objArray.getJSONObject("_source");
-					JSONObject kpi = source.getJSONObject("kpi");
-					JSONObject parameters = kpi.getJSONObject("parameters");
-					JSONObject message = parameters.getJSONObject("message");
-					String payload = message.getString("payload.string");
-					
-					Document doc = MyUtil.convertStringToXMLDocument(payload);
-					
-					String codResiber = MyUtil.obtenerCodigoDeXML(doc);
-					String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
-					
-					this.bean.setComentarios((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-					VentanaPrincipal.showInfo(bean.getComentarios());
-					
-					if(codResiber != null) 
+					int numError = 1;
+					for (int i=0; i<hitsArray.length(); i++)
 					{
-						switch(codResiber) 
-						{
-					    	case "11000011": detalleCaso11000011(); break;
-					    	case "11200003": detalleCaso11200003(); break;
-					    	case "12000039": detalleCaso12000039(); break;
-					    	case "14500001": detalleCaso14500001(); break;
-						}
+						JSONObject objArray = hitsArray.getJSONObject(i);
+						JSONObject source = objArray.getJSONObject("_source");
+						JSONObject kpi = source.getJSONObject("kpi");
+						JSONObject parameters = kpi.getJSONObject("parameters");
+						JSONObject message = parameters.getJSONObject("message");
+						String payload = message.getString("payload.string");
 						
-						return true;
+						Document doc = MyUtil.convertStringToXMLDocument(payload);
+						
+						NodeList nlError = doc.getElementsByTagName("error");
+						Node nodoError = nlError.item(0);
+						NodeList nlErr = doc.getElementsByTagName("err");
+						Node nodoErr = nlErr.item(0);
+						if( nodoError != null || nodoErr != null ) {
+						
+							String codResiber = MyUtil.obtenerCodigoDeXML(doc);
+							String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
+							
+							this.bean.setComentarios(this.bean.getComentarios() + (this.isFirstErrorFound?"":"\n") + "( "+numError+" ) " + (codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+							VentanaPrincipal.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+							
+							this.isFirstErrorFound = false;
+							hayError = true;
+							numError++;
+
+							switch(codResiber) 
+							{
+						    	case "11000011": detalleCaso11000011(); break;
+						    	case "11200003": detalleCaso11200003(); break;
+						    	case "12000039": detalleCaso12000039(); break;
+						    	case "14500001": detalleCaso14500001(); break;
+							}
+
+						}
 					}
 				}
 				else {
@@ -214,7 +242,7 @@ public class Resiber_SSE_ORM_9001 {
 				}
 	        }
 			
-			return false;
+			return hayError;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -243,7 +271,7 @@ public class Resiber_SSE_ORM_9001 {
 					JSONObject objArray = hitsArray.getJSONObject(0);
 					JSONObject source = objArray.getJSONObject("_source");
 					
-					if (source.has("exception")) 
+					if (source.has("exception") && !source.get("exception").equals(null)) 
 					{
 						JSONObject exception = source.getJSONObject("exception");
 	
