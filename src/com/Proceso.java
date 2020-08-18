@@ -225,7 +225,7 @@ public class Proceso {
 					
 				    String[] dE  = new String[2];
 					JSONObject objArrayII = bucketsArrayII.getJSONObject(j);
-					//Descripción - Puede tener diferentes descripciones para un mismo c�digo debido a los diferentes idiomas
+					//Descripción - Puede tener diferentes descripciones para un mismo código debido a los diferentes idiomas
 					dE[0] = objArrayII.getString("key");
 					Integer numCasos = objArrayII.getInt("doc_count");
 

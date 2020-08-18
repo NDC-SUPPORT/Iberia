@@ -19,10 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
@@ -37,26 +37,6 @@ public class VentanaPrincipal implements ActionListener {
 	private JButton btnSalir;
 	private JTextField txfFecha;
 	private JTextField txfIdExcel;
-	private JCheckBox chckbxADI;
-	private JCheckBox chckbxOC;
-	private JCheckBox chckbxFP;
-	private JCheckBox chckbxCA;
-	private JCheckBox chckbxSE;
-	private JCheckBox chckbxBA;
-	private JCheckBox chckbxOCH;
-	private JCheckBox chckbxIR;
-	private JCheckBox chckbxOR;
-	private JCheckBox chckbxAS;
-	private JCheckBox checkBoxAgruparADI;
-	private JCheckBox checkBoxAgruparAS;
-	private JCheckBox checkBoxAgruparFP;
-	private JCheckBox checkBoxAgruparOC;
-	private JCheckBox checkBoxAgruparCA;
-	private JCheckBox checkBoxAgruparSE;
-	private JCheckBox checkBoxAgruparBA;
-	private JCheckBox checkBoxAgruparOCH;
-	private JCheckBox checkBoxAgruparIR;
-	private JCheckBox checkBoxAgruparOR;
 	private JButton btnMas;
 	private JButton btnMenos;
 	private Date hoy;
@@ -69,6 +49,28 @@ public class VentanaPrincipal implements ActionListener {
 	private JButton btnAbrirExcel;
 	private static JTextPane textPane;
 	private static JScrollPane scrollPane;
+	private JCheckBox chckbxFP;
+	private JCheckBox chckbxOCH;
+	private JCheckBox chckbxSE;
+	private JCheckBox chckbxBA;
+	private JCheckBox chckbxIR;
+	private JCheckBox chckbxOR;
+	private JPanel panelPestaniaDos;
+	private JCheckBox chckbxOC;
+	private JPanel panelPestaniaTres;
+	private JCheckBox chckbxAS;
+	private JCheckBox chckbxADI;
+	private JCheckBox chckbxCA;
+	private JCheckBox checkBoxAgruparFP;
+	private JCheckBox checkBoxAgruparSE;
+	private JCheckBox checkBoxAgruparBA;
+	private JCheckBox checkBoxAgruparADI;
+	private JCheckBox checkBoxAgruparIR;
+	private JCheckBox checkBoxAgruparOCH;
+	private JCheckBox checkBoxAgruparOR;
+	private JCheckBox checkBoxAgruparCA;
+	private JCheckBox checkBoxAgruparAS;
+	private JCheckBox checkBoxAgruparOC;
 
 	/**
 	 * Launch the application.
@@ -122,133 +124,6 @@ public class VentanaPrincipal implements ActionListener {
 		btnSalir.addActionListener(this);
 		frame.getContentPane().add(btnSalir);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(10, 154, 456, 301);
-		panel.setLayout(null);
-		frame.getContentPane().add(panel);
-		
-		JCheckBox chckbxNewCheckBox_8 = new JCheckBox("Seleccionar todos");
-		chckbxNewCheckBox_8.setBounds(13, 5, 147, 25);
-		chckbxNewCheckBox_8.setFont(new Font("Tahoma", Font.BOLD, 14));
-		chckbxNewCheckBox_8.setEnabled(false);
-		panel.add(chckbxNewCheckBox_8);
-		
-		JCheckBox chckbxAgruparTodos = new JCheckBox("Agrupar todos");
-		chckbxAgruparTodos.setBounds(233, 5, 127, 25);
-		chckbxAgruparTodos.setFont(new Font("Tahoma", Font.BOLD, 14));
-		chckbxAgruparTodos.setEnabled(false);
-		panel.add(chckbxAgruparTodos);
-		
-		chckbxAS = new JCheckBox("Availability (AirShopping)");
-		chckbxAS.setBounds(13, 61, 173, 23);
-		chckbxAS.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxAS);
-		
-		chckbxFP = new JCheckBox("Fare (FlightPrice)");
-		chckbxFP.setBounds(13, 87, 127, 23);
-		chckbxFP.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxFP);
-		
-		chckbxADI = new JCheckBox("AirDocIssue");
-		chckbxADI.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		chckbxADI.setBounds(13, 33, 97, 23);
-		panel.add(chckbxADI);
-		
-		checkBoxAgruparADI = new JCheckBox("Agrupar");
-		checkBoxAgruparADI.setBounds(233, 35, 97, 23);
-		checkBoxAgruparADI.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(checkBoxAgruparADI);
-		
-		checkBoxAgruparAS = new JCheckBox("Agrupar");
-		checkBoxAgruparAS.setBounds(233, 61, 97, 23);
-		checkBoxAgruparAS.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparAS.setSelected(true);
-		checkBoxAgruparAS.setEnabled(false);
-		panel.add(checkBoxAgruparAS);
-		
-		checkBoxAgruparFP = new JCheckBox("Agrupar");
-		checkBoxAgruparFP.setBounds(233, 87, 97, 23);
-		checkBoxAgruparFP.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparFP.setSelected(true);
-		panel.add(checkBoxAgruparFP);
-		
-		chckbxOC = new JCheckBox("OrderCreate");
-		chckbxOC.setBounds(13, 113, 107, 23);
-		chckbxOC.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxOC);
-		
-		checkBoxAgruparOC = new JCheckBox("Agrupar");
-		checkBoxAgruparOC.setBounds(233, 113, 97, 23);
-		checkBoxAgruparOC.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(checkBoxAgruparOC);
-		
-		chckbxCA = new JCheckBox("OrderCancel");
-		chckbxCA.setBounds(13, 139, 107, 23);
-		chckbxCA.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxCA);
-		
-		chckbxSE = new JCheckBox("Seat");
-		chckbxSE.setBounds(13, 165, 97, 23);
-		chckbxSE.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxSE);
-		
-		chckbxBA = new JCheckBox("Baggage");
-		chckbxBA.setBounds(13, 191, 97, 23);
-		chckbxBA.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxBA);
-		
-		checkBoxAgruparCA = new JCheckBox("Agrupar");
-		checkBoxAgruparCA.setBounds(233, 139, 97, 23);
-		checkBoxAgruparCA.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparCA.setSelected(false);
-		panel.add(checkBoxAgruparCA);
-		
-		checkBoxAgruparSE = new JCheckBox("Agrupar");
-		checkBoxAgruparSE.setBounds(233, 165, 97, 23);
-		checkBoxAgruparSE.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparSE.setSelected(true);
-		panel.add(checkBoxAgruparSE);
-		
-		checkBoxAgruparBA = new JCheckBox("Agrupar");
-		checkBoxAgruparBA.setBounds(233, 191, 97, 23);
-		checkBoxAgruparBA.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparBA.setSelected(true);
-		panel.add(checkBoxAgruparBA);
-		
-		chckbxOCH = new JCheckBox("OrderChange");
-		chckbxOCH.setBounds(13, 217, 112, 23);
-		chckbxOCH.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxOCH);
-		
-		chckbxIR = new JCheckBox("ItinReshop");
-		chckbxIR.setBounds(13, 243, 97, 23);
-		chckbxIR.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxIR);
-		
-		checkBoxAgruparOCH = new JCheckBox("Agrupar");
-		checkBoxAgruparOCH.setBounds(233, 217, 97, 23);
-		checkBoxAgruparOCH.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparOCH.setSelected(false);
-		panel.add(checkBoxAgruparOCH);
-		
-		checkBoxAgruparIR = new JCheckBox("Agrupar");
-		checkBoxAgruparIR.setBounds(233, 243, 97, 23);
-		checkBoxAgruparIR.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparIR.setSelected(true);
-		panel.add(checkBoxAgruparIR);
-		
-		chckbxOR = new JCheckBox("OrderRetrieve");
-		chckbxOR.setBounds(13, 269, 146, 23);
-		chckbxOR.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panel.add(chckbxOR);
-		
-		checkBoxAgruparOR = new JCheckBox("Agrupar");
-		checkBoxAgruparOR.setBounds(233, 269, 97, 23);
-		checkBoxAgruparOR.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		checkBoxAgruparOR.setSelected(true);
-		panel.add(checkBoxAgruparOR);
-		
 		txfFecha = new JTextField();
 		txfFecha.setHorizontalAlignment(SwingConstants.CENTER);
 		txfFecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -288,7 +163,7 @@ public class VentanaPrincipal implements ActionListener {
 		frame.getContentPane().add(btnMenos);
 		
 		JLabel lblV = new JLabel("vs Kibana v5.6.11");
-		lblV.setBounds(100, 26, 103, 14);
+		lblV.setBounds(100, 26, 150, 14);
 		frame.getContentPane().add(lblV);
 		
 		chckbxAnotarTotalErrores = new JCheckBox("Anotar total");
@@ -353,6 +228,129 @@ public class VentanaPrincipal implements ActionListener {
 		btnAbrirExcel.addActionListener(this);
 		btnAbrirExcel.setBounds(283, 468, 183, 23);
 		frame.getContentPane().add(btnAbrirExcel);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tabbedPane.setBounds(10, 165, 456, 279);
+		frame.getContentPane().add(tabbedPane);
+		
+		JPanel panelPestaniaUno = new JPanel();
+		tabbedPane.addTab("Versión 16", null, panelPestaniaUno, null);
+		panelPestaniaUno.setLayout(null);
+		
+		chckbxFP = new JCheckBox("FlightPrice");
+		chckbxFP.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxFP.setBounds(20, 25, 150, 23);
+		panelPestaniaUno.add(chckbxFP);
+		
+		chckbxOCH = new JCheckBox("OrderChange");
+		chckbxOCH.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxOCH.setBounds(20, 150, 150, 23);
+		panelPestaniaUno.add(chckbxOCH);
+		
+		chckbxSE = new JCheckBox("GetSeat");
+		chckbxSE.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxSE.setBounds(20, 50, 150, 23);
+		panelPestaniaUno.add(chckbxSE);
+		
+		chckbxBA = new JCheckBox("GetBaggage");
+		chckbxBA.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxBA.setBounds(20, 75, 150, 23);
+		panelPestaniaUno.add(chckbxBA);
+		
+		chckbxIR = new JCheckBox("ItinReshop");
+		chckbxIR.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxIR.setBounds(20, 125, 150, 23);
+		panelPestaniaUno.add(chckbxIR);
+		
+		chckbxOR = new JCheckBox("OrderRetrieve");
+		chckbxOR.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxOR.setBounds(20, 175, 150, 23);
+		panelPestaniaUno.add(chckbxOR);
+		
+		chckbxADI = new JCheckBox("AirDocIssue");
+		chckbxADI.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxADI.setBounds(20, 100, 150, 23);
+		panelPestaniaUno.add(chckbxADI);
+		
+		chckbxCA = new JCheckBox("OrderCancel");
+		chckbxCA.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxCA.setBounds(20, 200, 150, 23);
+		panelPestaniaUno.add(chckbxCA);
+		
+		checkBoxAgruparFP = new JCheckBox("Agrupar");
+		checkBoxAgruparFP.setSelected(true);
+		checkBoxAgruparFP.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparFP.setBounds(195, 25, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparFP);
+		
+		checkBoxAgruparSE = new JCheckBox("Agrupar");
+		checkBoxAgruparSE.setSelected(true);
+		checkBoxAgruparSE.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparSE.setBounds(195, 50, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparSE);
+		
+		checkBoxAgruparBA = new JCheckBox("Agrupar");
+		checkBoxAgruparBA.setSelected(true);
+		checkBoxAgruparBA.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparBA.setBounds(195, 75, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparBA);
+		
+		checkBoxAgruparADI = new JCheckBox("Agrupar");
+		checkBoxAgruparADI.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparADI.setBounds(195, 100, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparADI);
+		
+		checkBoxAgruparIR = new JCheckBox("Agrupar");
+		checkBoxAgruparIR.setSelected(true);
+		checkBoxAgruparIR.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparIR.setBounds(195, 125, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparIR);
+		
+		checkBoxAgruparOCH = new JCheckBox("Agrupar");
+		checkBoxAgruparOCH.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparOCH.setBounds(195, 150, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparOCH);
+		
+		checkBoxAgruparOR = new JCheckBox("Agrupar");
+		checkBoxAgruparOR.setSelected(true);
+		checkBoxAgruparOR.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparOR.setBounds(195, 175, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparOR);
+		
+		checkBoxAgruparCA = new JCheckBox("Agrupar");
+		checkBoxAgruparCA.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparCA.setBounds(195, 200, 150, 23);
+		panelPestaniaUno.add(checkBoxAgruparCA);
+		
+		panelPestaniaDos = new JPanel();
+		tabbedPane.addTab("Version 16 y 17", null, panelPestaniaDos, null);
+		panelPestaniaDos.setLayout(null);
+		
+		chckbxOC = new JCheckBox("OrderCreate");
+		chckbxOC.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxOC.setBounds(20, 50, 150, 23);
+		panelPestaniaDos.add(chckbxOC);
+		
+		chckbxAS = new JCheckBox("AirShopping");
+		chckbxAS.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		chckbxAS.setBounds(20, 25, 150, 23);
+		panelPestaniaDos.add(chckbxAS);
+		
+		checkBoxAgruparAS = new JCheckBox("Agrupar");
+		checkBoxAgruparAS.setEnabled(false);
+		checkBoxAgruparAS.setSelected(true);
+		checkBoxAgruparAS.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparAS.setBounds(195, 25, 150, 23);
+		panelPestaniaDos.add(checkBoxAgruparAS);
+		
+		checkBoxAgruparOC = new JCheckBox("Agrupar");
+		checkBoxAgruparOC.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkBoxAgruparOC.setBounds(195, 50, 150, 23);
+		panelPestaniaDos.add(checkBoxAgruparOC);
+		
+		panelPestaniaTres = new JPanel();
+		tabbedPane.addTab("Version 17", null, panelPestaniaTres, null);
 	}
 	
 	public static void showInfo(String msg) {
