@@ -11,7 +11,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -54,7 +54,7 @@ public class Resiber_SSE_ORM_9001 {
 					   if (nodo != null && nodo instanceof Element) {
 						   String incluir = "Doc " + (i + 1) + " : "  + nodo.getTextContent();
 						   annadir += "\n" + incluir;
-						   VentanaPrincipal.showInfo(incluir);
+						   VentanaPrincipalYerros.showInfo(incluir);
 					   }  
 					}
 					
@@ -63,14 +63,14 @@ public class Resiber_SSE_ORM_9001 {
 				}
 				else
 				{
-					VentanaPrincipal.showInfo("Resiber_SSE_ORM_9001.detalleCaso12000039(): Array de resultados vacío en scriptResiberTktOut.sh");
+					VentanaPrincipalYerros.showInfo("Resiber_SSE_ORM_9001.detalleCaso12000039(): Array de resultados vacío en scriptResiberTktOut.sh");
 				}
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_9001.detalleCaso12000039() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_9001.detalleCaso12000039() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -149,7 +149,7 @@ public class Resiber_SSE_ORM_9001 {
 							String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
 							
 							this.bean.setComentarios(this.bean.getComentarios() + (this.isFirstErrorFound?"":"\n") + "( "+numError+" ) " + (codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-							VentanaPrincipal.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+							VentanaPrincipalYerros.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
 									
 							this.isFirstErrorFound = false;
 							hayError = true;
@@ -159,7 +159,7 @@ public class Resiber_SSE_ORM_9001 {
 					}
 				}
 				else {
-					VentanaPrincipal.showInfo("Resiber_SSE_ORM_9001.analizar(): Array de resultados vacío en scriptResiberResIn-desc.sh");
+					VentanaPrincipalYerros.showInfo("Resiber_SSE_ORM_9001.analizar(): Array de resultados vacío en scriptResiberResIn-desc.sh");
 				}
 			}
 			
@@ -167,8 +167,8 @@ public class Resiber_SSE_ORM_9001 {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_9001.obtenerCodDesDeResiberResIn() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_9001.obtenerCodDesDeResiberResIn() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 		
@@ -220,7 +220,7 @@ public class Resiber_SSE_ORM_9001 {
 							String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
 							
 							this.bean.setComentarios(this.bean.getComentarios() + (this.isFirstErrorFound?"":"\n") + "( "+numError+" ) " + (codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-							VentanaPrincipal.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
+							VentanaPrincipalYerros.showInfo((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
 							
 							this.isFirstErrorFound = false;
 							hayError = true;
@@ -246,8 +246,8 @@ public class Resiber_SSE_ORM_9001 {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_9001.obtenerCodDesDeResiberTktIn() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_9001.obtenerCodDesDeResiberTktIn() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			
 			return false;
 		}
@@ -283,7 +283,7 @@ public class Resiber_SSE_ORM_9001 {
 							//return false;
 						} else {
 							bean.setComentarios("exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}");
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 							//return true;
 						}
 					}
@@ -319,8 +319,8 @@ public class Resiber_SSE_ORM_9001 {
 		}
 		catch (Exception e)	{
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_9001.esCaso_ContensError() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_9001.esCaso_ContensError() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}
@@ -347,8 +347,8 @@ public class Resiber_SSE_ORM_9001 {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_9001.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_9001.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	

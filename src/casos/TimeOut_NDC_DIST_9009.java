@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 import com.VentanaPrincipalIberiaPay;
 
 import beans.BeanSheetExcel;
@@ -55,14 +55,14 @@ public class TimeOut_NDC_DIST_9009 {
 									String codigoRazon = jsonPayload.getString("reasonCode");
 									String decision = jsonPayload.getString("decision");
 									bean.setComentarios(bean.getComentarios() + " | " + "FRAUDE: " + codigoRazon + " - " + decision);
-									VentanaPrincipal.showInfo("FRAUDE: " + codigoRazon + " - " + decision);
+									VentanaPrincipalYerros.showInfo("FRAUDE: " + codigoRazon + " - " + decision);
 								}
 							
-								//Transacción
+								//Transacciï¿½n
 								if (jsonPayload.has("transactionId")) {
 									String transaccion = jsonPayload.getString("transactionId");
 									bean.setComentarios(bean.getComentarios() + " | " + "TRANSACCION: " + transaccion);
-									VentanaPrincipal.showInfo("TRANSACCION: " + transaccion);
+									VentanaPrincipalYerros.showInfo("TRANSACCION: " + transaccion);
 								}
 							
 								//Datos del pago
@@ -82,7 +82,7 @@ public class TimeOut_NDC_DIST_9009 {
 											String desc = result.getString("message");
 
 											bean.setComentarios(bean.getComentarios() + " | " + "PAGO: " + status + " (" + code + " - " + desc + ")");
-											VentanaPrincipal.showInfo("PAGO: " + status + "(" + code + " - " + desc + ")");
+											VentanaPrincipalYerros.showInfo("PAGO: " + status + "(" + code + " - " + desc + ")");
 										}
 									}
 								}
@@ -91,21 +91,21 @@ public class TimeOut_NDC_DIST_9009 {
 						    {
 						    	String responseCode = message.getString("responseCode.string");
 						    	bean.setComentarios(bean.getComentarios() + " | " + "WARNING !!! (HttpCode = " + responseCode + ") ");
-						    	VentanaPrincipal.showWarning("WARNING !!! -> payload vacío.");
+						    	VentanaPrincipalYerros.showWarning("WARNING !!! -> payload vacï¿½o.");
 						    }
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("TimeOut_NDC_DIST_9009.datosDelPagoIBPay(): Array de resultados vacío en scriptIberiaPay.sh");
+					VentanaPrincipalYerros.showInfo("TimeOut_NDC_DIST_9009.datosDelPagoIBPay(): Array de resultados vacï¿½o en scriptIberiaPay.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("TimeOut_NDC_DIST_9009.datosDelPagoIBPay() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("TimeOut_NDC_DIST_9009.datosDelPagoIBPay() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -141,7 +141,7 @@ public class TimeOut_NDC_DIST_9009 {
 					String errorDescription = exception.isNull("errorDescription")?"":exception.getString("errorDescription");
 
 					bean.setComentarios("exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}");
-					VentanaPrincipal.showInfo("TimeOut_NDC_DIST_9009: " + bean.getComentarios());
+					VentanaPrincipalYerros.showInfo("TimeOut_NDC_DIST_9009: " + bean.getComentarios());
 					
 					switch(bean.getTipoPago()) 
 					{
@@ -163,7 +163,7 @@ public class TimeOut_NDC_DIST_9009 {
 				}
 				else 
 				{
-					System.out.println("TimeOut_NDC_DIST_9009.analizar(): Array de resultados vacío en scriptPaymentInfo.sh");
+					System.out.println("TimeOut_NDC_DIST_9009.analizar(): Array de resultados vacï¿½o en scriptPaymentInfo.sh");
 				}
 	        }
 		}

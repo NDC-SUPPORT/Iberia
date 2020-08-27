@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -69,13 +69,13 @@ public class CA_Resiber_SSE_ORM_9001 {
 					if (detallesResiber != null) {
 						bean.setTipoError("RESIBER");
 						bean.setComentarios("PNR: " + bean.getPnr() + " | " + detallesResiber + "\n" + "TKTs: " + TKTResiber);
-						VentanaPrincipal.showInfo("CA_Resiber_SSE_ORM_9001.analizar(): " + bean.getComentarios());
+						VentanaPrincipalYerros.showInfo("CA_Resiber_SSE_ORM_9001.analizar(): " + bean.getComentarios());
 					}
 
 				}
 				else 
 				{
-					System.out.println("CA_Resiber_SSE_ORM_9001.analizar(): Array de resultados vacío en scriptResiberRequestTktIn.sh");
+					System.out.println("CA_Resiber_SSE_ORM_9001.analizar(): Array de resultados vacï¿½o en scriptResiberRequestTktIn.sh");
 				}
 	        }
 		}

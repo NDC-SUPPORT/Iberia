@@ -10,7 +10,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanFormulario;
 import beans.BeanSheetExcel;
@@ -83,11 +83,11 @@ public class Sara_SSE_ORM_900606
 					}
 					
 					this.bean.setComentarios(comentarios);
-					VentanaPrincipal.showInfo(this.bean.getComentarios());
+					VentanaPrincipalYerros.showInfo(this.bean.getComentarios());
 					return true;
 				} 
 				else {
-					VentanaPrincipal.showInfo("Sara_SSE_ORM_900606.esCasoSSE() = false");
+					VentanaPrincipalYerros.showInfo("Sara_SSE_ORM_900606.esCasoSSE() = false");
 				}
 			}
 			
@@ -95,8 +95,8 @@ public class Sara_SSE_ORM_900606
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Sara_SSE_ORM_900606.esCasoSSE() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Sara_SSE_ORM_900606.esCasoSSE() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}
@@ -165,11 +165,11 @@ public class Sara_SSE_ORM_900606
 					}
 					
 					this.bean.setComentarios(comentarios);
-					VentanaPrincipal.showInfo(this.bean.getComentarios());
+					VentanaPrincipalYerros.showInfo(this.bean.getComentarios());
 					return true;
 				} 
 				else {
-					VentanaPrincipal.showInfo("Sara_SSE_ORM_900606.esCasoResiberOrmProvider() = false");
+					VentanaPrincipalYerros.showInfo("Sara_SSE_ORM_900606.esCasoResiberOrmProvider() = false");
 				}
 			}
 			
@@ -177,8 +177,8 @@ public class Sara_SSE_ORM_900606
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Sara_SSE_ORM_900606.esCasoResiberOrmProvider() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Sara_SSE_ORM_900606.esCasoResiberOrmProvider() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}
@@ -213,7 +213,7 @@ public class Sara_SSE_ORM_900606
 							return false;
 						} else {
 							bean.setComentarios("exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}");
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 							return true;
 						}
 					}
@@ -224,8 +224,8 @@ public class Sara_SSE_ORM_900606
 		}
 		catch (Exception e)	{
 			e.printStackTrace();
-			VentanaPrincipal.showError("Sara_SSE_ORM_900606.esCasoAcreditacionError() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Sara_SSE_ORM_900606.esCasoAcreditacionError() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}
@@ -251,13 +251,13 @@ public class Sara_SSE_ORM_900606
 			} else {
 				String comentario = "WARNING !!! -> No existe causística contemplada";
 				bean.setComentarios(comentario);
-				VentanaPrincipal.showWarning(comentario);
+				VentanaPrincipalYerros.showWarning(comentario);
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Sara_SSE_ORM_900606.analizar() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Sara_SSE_ORM_900606.analizar() -> " + "fecha: " + bean.getFechaLocal() + " - request: " + bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	

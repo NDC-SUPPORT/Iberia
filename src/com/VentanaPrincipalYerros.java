@@ -30,7 +30,7 @@ import javax.swing.text.StyleConstants;
 
 import beans.BeanFormulario;
 
-public class VentanaPrincipal implements ActionListener {
+public class VentanaPrincipalYerros implements ActionListener {
 
 	private JFrame  frame;
 	private JButton btnEjecutar;
@@ -79,7 +79,7 @@ public class VentanaPrincipal implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal window = new VentanaPrincipal();
+					VentanaPrincipalYerros window = new VentanaPrincipalYerros();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -91,7 +91,7 @@ public class VentanaPrincipal implements ActionListener {
 	/**
 	 * Create the application.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipalYerros() {
 		initialize();
 	}
 

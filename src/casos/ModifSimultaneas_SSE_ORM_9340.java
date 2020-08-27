@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -53,17 +53,17 @@ public class ModifSimultaneas_SSE_ORM_9340 {
 				String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
 				
 				this.bean.setComentarios((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-				VentanaPrincipal.showInfo(this.bean.getComentarios());
+				VentanaPrincipalYerros.showInfo(this.bean.getComentarios());
 			}
 			else
 			{
-				VentanaPrincipal.showInfo("ModifSimultaneas_SSE_ORM_9340.analizar: Array de resultados vacío en scriptResiberResIn-desc.sh");
+				VentanaPrincipalYerros.showInfo("ModifSimultaneas_SSE_ORM_9340.analizar: Array de resultados vacío en scriptResiberResIn-desc.sh");
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("ERROR !!! -> ModifSimultaneas_SSE_ORM_9340.analizar -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ERROR !!! -> ModifSimultaneas_SSE_ORM_9340.analizar -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	

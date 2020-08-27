@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 import com.VentanaPrincipalIberiaPay;
 
 import beans.BeanSheetExcel;
@@ -81,14 +81,14 @@ public class TrazaPagoIBPay {
 									String codigoRazon = jsonPayload.getString("reasonCode");
 									String decision = jsonPayload.getString("decision");
 									this.resultFraude = " | " + "FRAUDE: " + codigoRazon + " - " + decision;
-									VentanaPrincipal.showInfo("FRAUDE: " + codigoRazon + " - " + decision);
+									VentanaPrincipalYerros.showInfo("FRAUDE: " + codigoRazon + " - " + decision);
 								}
 							
-								//Transacción
+								//Transacciï¿½n
 								if (jsonPayload.has("transactionId")) {
 									String transaccion = jsonPayload.getString("transactionId");
 									this.resultTransactionID = " | " + "TRANSACCION: " + transaccion;
-									VentanaPrincipal.showInfo("TRANSACCION: " + transaccion);
+									VentanaPrincipalYerros.showInfo("TRANSACCION: " + transaccion);
 								}
 							
 								//Datos del pago
@@ -108,7 +108,7 @@ public class TrazaPagoIBPay {
 											String desc = result.getString("message");
 
 											this.resultPayment = " | " + "PAGO: " + status + " (" + code + " - " + desc + ")";
-											VentanaPrincipal.showInfo("PAGO: " + status + "(" + code + " - " + desc + ")");
+											VentanaPrincipalYerros.showInfo("PAGO: " + status + "(" + code + " - " + desc + ")");
 										}
 									}
 									else if (item.has("transactionPath") && item.isNull("transactionPath"))
@@ -122,21 +122,21 @@ public class TrazaPagoIBPay {
 						    }
 						    else
 						    {
-						    	VentanaPrincipal.showWarning("WARNING !!! -> payload vacío.");
+						    	VentanaPrincipalYerros.showWarning("WARNING !!! -> payload vacï¿½o.");
 						    }
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("TrazaPagoIBPay.datosDelPagoIBPay(): Array de resultados vacío en scriptIberiaPay.sh");
+					VentanaPrincipalYerros.showInfo("TrazaPagoIBPay.datosDelPagoIBPay(): Array de resultados vacï¿½o en scriptIberiaPay.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("TrazaPagoIBPay.datosDelPagoIBPay() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("TrazaPagoIBPay.datosDelPagoIBPay() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -171,20 +171,20 @@ public class TrazaPagoIBPay {
 							
 						} else {
 							this.errorPayment = "exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}";
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("TrazaPagoIBPay.obtenerErrorPago(): Array de resultados vacío en scriptIBPayPaymentError.sh");
+					VentanaPrincipalYerros.showInfo("TrazaPagoIBPay.obtenerErrorPago(): Array de resultados vacï¿½o en scriptIBPayPaymentError.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("TrazaPagoIBPay.obtenerErrorPago() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("TrazaPagoIBPay.obtenerErrorPago() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -219,20 +219,20 @@ public class TrazaPagoIBPay {
 							
 						} else {
 							this.errorTransaccion = "exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}";
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("TrazaPagoIBPay.obtenerErrorTransaccion(): Array de resultados vacío en scriptIBPayPaymentError.sh");
+					VentanaPrincipalYerros.showInfo("TrazaPagoIBPay.obtenerErrorTransaccion(): Array de resultados vacï¿½o en scriptIBPayPaymentError.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("TrazaPagoIBPay.obtenerErrorTransaccion() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("TrazaPagoIBPay.obtenerErrorTransaccion() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -267,20 +267,20 @@ public class TrazaPagoIBPay {
 							
 						} else {
 							this.errorVault = "exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}";
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 						}
 					}
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("TrazaPagoIBPay.obtenerErrorVault(): Array de resultados vacío en scriptIBPayPaymentError.sh");
+					VentanaPrincipalYerros.showInfo("TrazaPagoIBPay.obtenerErrorVault(): Array de resultados vacï¿½o en scriptIBPayPaymentError.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("TrazaPagoIBPay.obtenerErrorTransaccion() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("TrazaPagoIBPay.obtenerErrorTransaccion() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -311,7 +311,7 @@ public class TrazaPagoIBPay {
 		try
 		{
 			this.pnr = MyUtil.obtenerPNR(bean);
-			//Es importante primero realizar este método para informar si tiene llamadas a IBPay o no... "tieneLlamadasIBPay"
+			//Es importante primero realizar este mï¿½todo para informar si tiene llamadas a IBPay o no... "tieneLlamadasIBPay"
 			datosDelPagoIBPay(bean);
 			
 			obtenerErrorVault(bean);

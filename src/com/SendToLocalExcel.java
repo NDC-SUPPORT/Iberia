@@ -41,7 +41,7 @@ public class SendToLocalExcel {
 		{ 
 			if (textPath.isEmpty()) 
 			{
-				VentanaPrincipal.showError("Por favor, indica la ruta del Excel");
+				VentanaPrincipalYerros.showError("Por favor, indica la ruta del Excel");
 			}
 			else
 			{
@@ -50,8 +50,8 @@ public class SendToLocalExcel {
 				
 				if (fileIsNotLocked) 
 				{
-					VentanaPrincipal.showInfo("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-					VentanaPrincipal.showInfo("1) Preparando datos para Excel...");
+					VentanaPrincipalYerros.showInfo("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+					VentanaPrincipalYerros.showInfo("1) Preparando datos para Excel...");
 					
 					excelInStream = new FileInputStream(new File(textPath));
 					workbook = new XSSFWorkbook(excelInStream);
@@ -89,7 +89,7 @@ public class SendToLocalExcel {
 			          
 					//https://stackoverflow.com/questions/48040638/how-to-insert-a-linebreak-as-the-data-of-a-cell
 					
-					VentanaPrincipal.showInfo("2) Enviando datos a: " + bF.getRutaExcel());
+					VentanaPrincipalYerros.showInfo("2) Enviando datos a: " + bF.getRutaExcel());
 					
 			        //Iterate over data and write to sheet
 			        Set<Integer> keyset = data.keySet();
@@ -114,7 +114,7 @@ public class SendToLocalExcel {
 			            }
 			        }
 			        
-			        VentanaPrincipal.showInfo("3) A partir de la fila: " + (numCasos==0?"N/A":filaInicio+1));
+			        VentanaPrincipalYerros.showInfo("3) A partir de la fila: " + (numCasos==0?"N/A":filaInicio+1));
 			        
 			        //Actualizamos la pestaña de contadores...
 			        Row rowPestaniaCero = null;
@@ -149,11 +149,11 @@ public class SendToLocalExcel {
 		            excelInStream.close();
 		            excelOutStream.close();
 		            
-		            VentanaPrincipal.showInfo("*** FIN ***");
+		            VentanaPrincipalYerros.showInfo("*** FIN ***");
 				} 
 				else 
 				{
-					VentanaPrincipal.showError("Por favor, cierra el fichero Excel !!!");
+					VentanaPrincipalYerros.showError("Por favor, cierra el fichero Excel !!!");
 				}
 			}
             

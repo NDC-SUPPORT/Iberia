@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -44,7 +44,7 @@ public class VueloCompleto_SSE_ORM_9339 {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return "";
 		}
 	}
@@ -70,13 +70,13 @@ public class VueloCompleto_SSE_ORM_9339 {
 			}
 			else
 			{
-				VentanaPrincipal.showInfo("VueloCompleto_SSE_ORM_9339.obtenerRequestEnFP: Array de resultados vacío en scriptFlightPriceResponseID.sh");
+				VentanaPrincipalYerros.showInfo("VueloCompleto_SSE_ORM_9339.obtenerRequestEnFP: Array de resultados vacío en scriptFlightPriceResponseID.sh");
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerRequestEnFP -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerRequestEnFP -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 		
 		return null;
@@ -103,13 +103,13 @@ public class VueloCompleto_SSE_ORM_9339 {
 			}
 			else
 			{
-				VentanaPrincipal.showInfo("VueloCompleto_SSE_ORM_9339.obtenerRequestEnOP: Array de resultados vacío en scriptFlightPriceResponseID.sh");
+				VentanaPrincipalYerros.showInfo("VueloCompleto_SSE_ORM_9339.obtenerRequestEnOP: Array de resultados vacío en scriptFlightPriceResponseID.sh");
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerRequestEnOP -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerRequestEnOP -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 		
 		return null;
@@ -141,17 +141,17 @@ public class VueloCompleto_SSE_ORM_9339 {
 				String descResiber = MyUtil.obtenerDescripcionDeXML(doc);
 				
 				this.bean.setComentarios((codResiber!=null?codResiber:"null") + " - " + (descResiber!=null?descResiber:"null"));
-				VentanaPrincipal.showInfo(this.bean.getComentarios());
+				VentanaPrincipalYerros.showInfo(this.bean.getComentarios());
 			}
 			else
 			{
-				VentanaPrincipal.showInfo("VueloCompleto_SSE_ORM_9339.obtenerErrorResiber: Array de resultados vacío en scriptResiberTktIn-desc.sh.sh");
+				VentanaPrincipalYerros.showInfo("VueloCompleto_SSE_ORM_9339.obtenerErrorResiber: Array de resultados vacío en scriptResiberTktIn-desc.sh.sh");
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerErrorResiber -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ERROR !!! -> VueloCompleto_SSE_ORM_9339.obtenerErrorResiber -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}	
 	
@@ -238,15 +238,15 @@ public class VueloCompleto_SSE_ORM_9339 {
 					}
 					else 
 					{
-						VentanaPrincipal.showInfo("VueloCompleto_SSE_ORM_9339.analizar(): Array de resultados vacío en scriptGetFareCtrlInfo.sh");
+						VentanaPrincipalYerros.showInfo("VueloCompleto_SSE_ORM_9339.analizar(): Array de resultados vacío en scriptGetFareCtrlInfo.sh");
 					}
 		        }
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("VueloCompleto_SSE_ORM_9339.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("VueloCompleto_SSE_ORM_9339.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	

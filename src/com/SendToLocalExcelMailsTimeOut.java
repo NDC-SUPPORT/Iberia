@@ -37,7 +37,7 @@ public class SendToLocalExcelMailsTimeOut {
 		{ 
 			if (textPath.isEmpty()) 
 			{
-				VentanaPrincipal.showError("Por favor, indica la ruta del Excel");
+				VentanaPrincipalMailsTimeOut.showError("Por favor, indica la ruta del Excel");
 			}
 			else
 			{

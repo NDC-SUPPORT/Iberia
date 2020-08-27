@@ -28,11 +28,11 @@ public class MyUtil {
 		if ("VentanaPrincipal".equals(ventanaEnEjecucion))
 		{
 			if ("INFO".equals(tipo)) {
-				VentanaPrincipal.showInfo(mensaje);
+				VentanaPrincipalYerros.showInfo(mensaje);
 			} else if ("WARNING".equals(tipo)) {
-				VentanaPrincipal.showWarning(mensaje);
+				VentanaPrincipalYerros.showWarning(mensaje);
 			} else if ("ERROR".equals(tipo)) {
-				VentanaPrincipal.showError(mensaje);
+				VentanaPrincipalYerros.showError(mensaje);
 			}
 		}
 		else if ("VentanaPrincipalIberiaPay".equals(ventanaEnEjecucion))

@@ -178,11 +178,11 @@ public class Proceso {
 			}
 			
 			if (myList.size()==999) {
-				VentanaPrincipal.showWarning("WARNING !!! - TOTAL Resquest encontradas (max 999): " + myList.size());
+				VentanaPrincipalYerros.showWarning("WARNING !!! - TOTAL Resquest encontradas (max 999): " + myList.size());
 			} else {
-				VentanaPrincipal.showInfo("TOTAL Resquest encontradas (max 999): " + myList.size());
+				VentanaPrincipalYerros.showInfo("TOTAL Resquest encontradas (max 999): " + myList.size());
 				if (myList.size() == 0) {
-					VentanaPrincipal.showWarning("WARNING - Ejecutar(" + codServ + ") / " + MyUtil.getNombrePestaniaExcel(codServ) + ": No hay resultados.");
+					VentanaPrincipalYerros.showWarning("WARNING - Ejecutar(" + codServ + ") / " + MyUtil.getNombrePestaniaExcel(codServ) + ": No hay resultados.");
 				}
 			}			
 			
@@ -190,7 +190,7 @@ public class Proceso {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return null;
 		}
 	}
@@ -238,7 +238,7 @@ public class Proceso {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return null;
 		}
 	}
@@ -395,7 +395,7 @@ public class Proceso {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
@@ -451,7 +451,7 @@ public class Proceso {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -48,7 +48,7 @@ public class ADI_FRAM_B0006 {
 							return false;
 						} else {
 							bean.setComentarios("confirmationmail -> exception: {" + "\n" + "     stackTrace: " + (stackTrace.split("\n"))[0].toString() + "\n" + "     errorCode: " + errorCode + "\n" + "     errorDescription: " + errorDescription + "\n" + "}");
-							VentanaPrincipal.showInfo(bean.getComentarios());
+							VentanaPrincipalYerros.showInfo(bean.getComentarios());
 							return true;
 						}
 					}
@@ -59,8 +59,8 @@ public class ADI_FRAM_B0006 {
 		}
 		catch (Exception e)	{
 			e.printStackTrace();
-			VentanaPrincipal.showError("ADI_FRAM_B0006.esCasoMail() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ADI_FRAM_B0006.esCasoMail() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}
@@ -106,8 +106,8 @@ public class ADI_FRAM_B0006 {
 		}
 		catch (Exception e)	{
 			e.printStackTrace();
-			VentanaPrincipal.showError("ADI_FRAM_B0006.esCasoManipulacionExt() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("ADI_FRAM_B0006.esCasoManipulacionExt() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 			return false;
 		}
 	}

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -56,7 +56,7 @@ public class Resiber_SSE_ORM_900616 {
 					if ("HDQ".equals(ciudadUpd)) {
 						bean.setTipoError("MANIPULACION EXTERNA");
 						bean.setComentarios("Update: " + ciudadUpd + numAgente + " - Fecha y hora: " + fechaUpd + " " + horaUpd);
-						VentanaPrincipal.showInfo("Resiber_SSE_ORM_900616.analizar(): " + bean.getComentarios());
+						VentanaPrincipalYerros.showInfo("Resiber_SSE_ORM_900616.analizar(): " + bean.getComentarios());
 					} else {
 						
 					}		
@@ -65,8 +65,8 @@ public class Resiber_SSE_ORM_900616 {
 		}
 		catch (Exception e)	{
 			e.printStackTrace();
-			VentanaPrincipal.showError("Resiber_SSE_ORM_900616.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Resiber_SSE_ORM_900616.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.MyUtil;
-import com.VentanaPrincipal;
+import com.VentanaPrincipalYerros;
 
 import beans.BeanSheetExcel;
 
@@ -79,18 +79,18 @@ public class Payment_PMT_PPM_12005 {
 					
 					this.bean.setTipoError("NETPLUS");
 					this.bean.setComentarios(comentarios);
-					VentanaPrincipal.showInfo(comentarios);
+					VentanaPrincipalYerros.showInfo(comentarios);
 				}
 				else 
 				{
-					VentanaPrincipal.showInfo("Payment_PMT_PPM_12005.analizar(): Array de resultados vacío en scriptNetPlusToken.sh");
+					VentanaPrincipalYerros.showInfo("Payment_PMT_PPM_12005.analizar(): Array de resultados vacío en scriptNetPlusToken.sh");
 				}
 	        }
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			VentanaPrincipal.showError("Payment_PMT_PPM_12005.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
-			VentanaPrincipal.showError(e.getMessage());
+			VentanaPrincipalYerros.showError("Payment_PMT_PPM_12005.analizar() -> " + "fecha: " + this.bean.getFechaLocal() + " - request: " + this.bean.getCodRequest());
+			VentanaPrincipalYerros.showError(e.getMessage());
 		}
 	}
 	
